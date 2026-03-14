@@ -1,0 +1,1683 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Tool Suite — Local</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ═══════════════════════════════ TOP NAV ══════════════════════════════════ -->
+    <header class="topnav" role="banner">
+      <div class="topnav__inner">
+        <a
+          href="#"
+          class="topnav__logo"
+          data-tool="home"
+          aria-label="PDF Tool Suite Home"
+        >
+          <span class="logo-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="6" fill="url(#grad1)" />
+              <path
+                d="M7 7h14v2H7zM7 11h10v2H7zM7 15h12v2H7zM7 19h8v2H7z"
+                fill="white"
+              />
+              <defs>
+                <linearGradient
+                  id="grad1"
+                  x1="0"
+                  y1="0"
+                  x2="28"
+                  y2="28"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#6366f1" />
+                  <stop offset="1" stop-color="#06b6d4" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <span class="logo-text"
+            >PDF<span class="logo-accent">Suite</span></span
+          >
+        </a>
+
+        <nav class="topnav__links" aria-label="Tool navigation">
+          <a href="#" class="nav-link" data-tool="compress">Compress</a>
+          <a href="#" class="nav-link" data-tool="merge">Merge</a>
+          <a href="#" class="nav-link" data-tool="split">Split</a>
+          <a href="#" class="nav-link" data-tool="unlock">Unlock</a>
+          <a href="#" class="nav-link" data-tool="editor">Editor</a>
+          <div class="nav-dropdown-wrapper">
+            <button
+              class="nav-link nav-dropdown-btn"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Convert <span class="chevron">▾</span>
+            </button>
+            <div class="nav-dropdown" role="menu">
+              <a
+                href="#"
+                class="nav-dropdown-item"
+                data-tool="to-jpg"
+                role="menuitem"
+                >→ JPG</a
+              >
+              <a
+                href="#"
+                class="nav-dropdown-item"
+                data-tool="to-png"
+                role="menuitem"
+                >→ PNG</a
+              >
+              <a
+                href="#"
+                class="nav-dropdown-item"
+                data-tool="to-webp"
+                role="menuitem"
+                >→ WebP</a
+              >
+              <a
+                href="#"
+                class="nav-dropdown-item"
+                data-tool="to-excel"
+                role="menuitem"
+                >→ Excel</a
+              >
+              <a
+                href="#"
+                class="nav-dropdown-item"
+                data-tool="to-word"
+                role="menuitem"
+                >→ Word</a
+              >
+              <a
+                href="#"
+                class="nav-dropdown-item"
+                data-tool="to-ppt"
+                role="menuitem"
+                >→ PowerPoint</a
+              >
+            </div>
+          </div>
+        </nav>
+
+        <div class="topnav__actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle dark/light mode"
+            title="Toggle theme"
+          >
+            <span class="theme-icon theme-icon--moon">🌙</span>
+            <span class="theme-icon theme-icon--sun">☀️</span>
+          </button>
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════ SIDEBAR ══════════════════════════════════ -->
+    <aside
+      class="sidebar"
+      id="sidebar"
+      role="navigation"
+      aria-label="Tools sidebar"
+    >
+      <div class="sidebar__header">
+        <span class="sidebar__title">Tools</span>
+        <button
+          class="sidebar__close"
+          id="sidebarClose"
+          aria-label="Close sidebar"
+        >
+          ✕
+        </button>
+      </div>
+      <nav class="sidebar__nav">
+        <a href="#" class="sidebar-link" data-tool="home" aria-label="Home">
+          <span class="sidebar-link__icon">⌂</span> Home
+        </a>
+        <div class="sidebar__group-label">Edit</div>
+        <a href="#" class="sidebar-link" data-tool="editor">
+          <span class="sidebar-link__icon">✏️</span> PDF Editor
+        </a>
+        <a href="#" class="sidebar-link" data-tool="compress">
+          <span class="sidebar-link__icon">⚡</span> Compressor
+        </a>
+        <div class="sidebar__group-label">Organise</div>
+        <a href="#" class="sidebar-link" data-tool="merge">
+          <span class="sidebar-link__icon">⊕</span> Merge PDFs
+        </a>
+        <a href="#" class="sidebar-link" data-tool="split">
+          <span class="sidebar-link__icon">✂</span> Split PDF
+        </a>
+        <a href="#" class="sidebar-link" data-tool="unlock">
+          <span class="sidebar-link__icon">🔓</span> Unlock PDF
+        </a>
+        <div class="sidebar__group-label">Convert</div>
+        <a href="#" class="sidebar-link" data-tool="to-jpg">
+          <span class="sidebar-link__icon">🖼</span> PDF → JPG
+        </a>
+        <a href="#" class="sidebar-link" data-tool="to-png">
+          <span class="sidebar-link__icon">🖼</span> PDF → PNG
+        </a>
+        <a href="#" class="sidebar-link" data-tool="to-webp">
+          <span class="sidebar-link__icon">🖼</span> PDF → WebP
+        </a>
+        <a href="#" class="sidebar-link" data-tool="to-excel">
+          <span class="sidebar-link__icon">📊</span> PDF → Excel
+        </a>
+        <a href="#" class="sidebar-link" data-tool="to-word">
+          <span class="sidebar-link__icon">📝</span> PDF → Word
+        </a>
+        <a href="#" class="sidebar-link" data-tool="to-ppt">
+          <span class="sidebar-link__icon">📽</span> PDF → PowerPoint
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ═══════════════════════════════ MAIN CONTENT ══════════════════════════════ -->
+    <main class="main-content" id="mainContent">
+      <!-- ── OVERLAY (sidebar) ── -->
+      <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+      <!-- ══════════════════════════ HOME PAGE ══════════════════════════════════ -->
+      <section id="page-home" class="page active" aria-label="Home">
+        <div class="hero">
+          <div class="hero__text">
+            <h1 class="hero__title">
+              All your PDF tools.<br /><span class="gradient-text"
+                >Offline. Free. Fast.</span
+              >
+            </h1>
+            <p class="hero__sub">
+              A complete PDF toolkit that runs entirely on your machine — no
+              cloud, no subscriptions, no data leaving your computer.
+            </p>
+            <div class="hero__badges">
+              <span class="badge">🔒 100% Local</span>
+              <span class="badge">🚀 No Upload Limits*</span>
+              <span class="badge">⚡ Open Source Stack</span>
+            </div>
+          </div>
+          <div class="hero__visual" aria-hidden="true">
+            <div class="hero-pdf-stack">
+              <div class="pdf-card pdf-card--1"></div>
+              <div class="pdf-card pdf-card--2"></div>
+              <div class="pdf-card pdf-card--3"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tools-section">
+          <h2 class="section-title">All Tools</h2>
+          <div class="tools-grid" id="toolsGrid">
+            <article
+              class="tool-card"
+              data-tool="editor"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF Editor"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#ce)" />
+                  <path
+                    d="M12 28l3-3 10-10-3-3-10 10-3 3h3zm14-16l2 2-2-2z"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <defs>
+                    <linearGradient id="ce" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#6366f1" />
+                      <stop offset="1" stop-color="#8b5cf6" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>PDF Editor</h3>
+                <p>
+                  Add text, shapes, highlights and sticky notes. Reorder or
+                  delete pages.
+                </p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+
+            <article
+              class="tool-card"
+              data-tool="compress"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF Compressor"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#cc)" />
+                  <path
+                    d="M20 10v12m0 0l-4-4m4 4l4-4M10 26h20"
+                    stroke="#fff"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <defs>
+                    <linearGradient id="cc" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#f59e0b" />
+                      <stop offset="1" stop-color="#ef4444" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>Compressor</h3>
+                <p>
+                  Shrink PDF size with a quality slider. Ghostscript-powered,
+                  real-time estimates.
+                </p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+
+            <article
+              class="tool-card"
+              data-tool="merge"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF Merge"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#cm)" />
+                  <path
+                    d="M13 10h6v20h-6zM21 10h6v20h-6z"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M19 20h2"
+                    stroke="#fff"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                  />
+                  <defs>
+                    <linearGradient id="cm" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#10b981" />
+                      <stop offset="1" stop-color="#06b6d4" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>Merge PDFs</h3>
+                <p>
+                  Combine multiple PDFs into one. Drag to reorder, preview
+                  thumbnails.
+                </p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+
+            <article
+              class="tool-card"
+              data-tool="split"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF Split"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#cs)" />
+                  <path
+                    d="M10 20h20M20 10v8M20 22v8"
+                    stroke="#fff"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                  />
+                  <defs>
+                    <linearGradient id="cs" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#f43f5e" />
+                      <stop offset="1" stop-color="#f97316" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>Split PDF</h3>
+                <p>
+                  Split by range, every N pages, or extract specific pages.
+                  Download as ZIP.
+                </p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+
+            <article
+              class="tool-card"
+              data-tool="unlock"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF Unlock"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#cu)" />
+                  <path
+                    d="M15 18v-4a5 5 0 0110 0"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <rect
+                    x="11"
+                    y="18"
+                    width="18"
+                    height="12"
+                    rx="3"
+                    stroke="#fff"
+                    stroke-width="2"
+                  />
+                  <circle cx="20" cy="24" r="2" fill="#fff" />
+                  <defs>
+                    <linearGradient id="cu" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#a855f7" />
+                      <stop offset="1" stop-color="#6366f1" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>Unlock PDF</h3>
+                <p>Remove password protection from encrypted PDFs instantly.</p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+
+            <article
+              class="tool-card"
+              data-tool="to-jpg"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF to JPG"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#cj)" />
+                  <rect
+                    x="10"
+                    y="12"
+                    width="20"
+                    height="16"
+                    rx="2"
+                    stroke="#fff"
+                    stroke-width="2"
+                  />
+                  <circle cx="16" cy="18" r="2" fill="#fff" />
+                  <path
+                    d="M10 24l5-5 4 4 3-3 5 5"
+                    stroke="#fff"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <defs>
+                    <linearGradient id="cj" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#ec4899" />
+                      <stop offset="1" stop-color="#f43f5e" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>PDF → JPG</h3>
+                <p>Convert PDF pages to high-quality JPG images. Select DPI.</p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+
+            <article
+              class="tool-card"
+              data-tool="to-png"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF to PNG"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#cpng)" />
+                  <rect
+                    x="10"
+                    y="12"
+                    width="20"
+                    height="16"
+                    rx="2"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-dasharray="4 2"
+                  />
+                  <circle cx="16" cy="18" r="2" fill="#fff" />
+                  <path
+                    d="M10 24l5-5 4 4 3-3 5 5"
+                    stroke="#fff"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <defs>
+                    <linearGradient id="cpng" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#06b6d4" />
+                      <stop offset="1" stop-color="#3b82f6" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>PDF → PNG</h3>
+                <p>
+                  Lossless PNG export with transparency support. Select DPI.
+                </p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+
+            <article
+              class="tool-card"
+              data-tool="to-webp"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF to WebP"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#cwp)" />
+                  <path
+                    d="M10 20c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M15 20l3 3 7-7"
+                    stroke="#fff"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <defs>
+                    <linearGradient id="cwp" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#84cc16" />
+                      <stop offset="1" stop-color="#10b981" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>PDF → WebP</h3>
+                <p>Modern web format with adjustable quality slider.</p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+
+            <article
+              class="tool-card"
+              data-tool="to-excel"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF to Excel"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#cxl)" />
+                  <rect
+                    x="9"
+                    y="9"
+                    width="22"
+                    height="22"
+                    rx="2"
+                    stroke="#fff"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M9 15h22M9 21h22M9 27h22M15 9v22M21 9v22"
+                    stroke="#fff"
+                    stroke-width="1.5"
+                    stroke-dasharray="2 1"
+                  />
+                  <defs>
+                    <linearGradient id="cxl" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#10b981" />
+                      <stop offset="1" stop-color="#059669" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>PDF → Excel</h3>
+                <p>
+                  Extract tables with pdfplumber into a formatted .xlsx
+                  workbook.
+                </p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+
+            <article
+              class="tool-card"
+              data-tool="to-word"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF to Word"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#cwd)" />
+                  <path
+                    d="M11 9h11l9 9v13a2 2 0 01-2 2H11a2 2 0 01-2-2V11a2 2 0 012-2z"
+                    stroke="#fff"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M22 9v9h9"
+                    stroke="#fff"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M14 20h12M14 24h8"
+                    stroke="#fff"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <defs>
+                    <linearGradient id="cwd" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#3b82f6" />
+                      <stop offset="1" stop-color="#6366f1" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>PDF → Word</h3>
+                <p>
+                  Convert to editable .docx with layout preservation via
+                  pdf2docx.
+                </p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+
+            <article
+              class="tool-card"
+              data-tool="to-ppt"
+              tabindex="0"
+              role="button"
+              aria-label="Open PDF to PowerPoint"
+            >
+              <div class="tool-card__icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="10" fill="url(#cpp)" />
+                  <rect
+                    x="8"
+                    y="11"
+                    width="24"
+                    height="16"
+                    rx="2"
+                    stroke="#fff"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M20 27v4M15 31h10"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <defs>
+                    <linearGradient id="cpp" x1="0" y1="0" x2="40" y2="40">
+                      <stop stop-color="#f97316" />
+                      <stop offset="1" stop-color="#ef4444" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="tool-card__body">
+                <h3>PDF → PowerPoint</h3>
+                <p>Each PDF page becomes a high-res slide in a .pptx file.</p>
+              </div>
+              <span class="tool-card__arrow">→</span>
+            </article>
+          </div>
+          <!-- /tools-grid -->
+        </div>
+        <!-- /tools-section -->
+
+        <footer class="home-footer">
+          <p>
+            * Files stay on your machine. Max recommended:
+            <strong>100 MB</strong> per operation. Requires Python 3.10+ and
+            Ghostscript installed locally.
+          </p>
+        </footer>
+      </section>
+
+      <!-- ══════════════════════════ TOOL PAGES ══════════════════════════════════ -->
+
+      <!-- COMPRESS -->
+      <section
+        id="page-compress"
+        class="page tool-page"
+        aria-label="PDF Compressor"
+      >
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back to home">
+            ← Back
+          </button>
+          <h2>PDF Compressor</h2>
+          <p class="tool-page__desc">
+            Reduce PDF file size using Ghostscript. Drag the slider to set
+            quality.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone"
+            id="compressUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload PDF file for compression"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon" aria-hidden="true">📄</div>
+              <p class="upload-zone__text">
+                Drag & drop a PDF here or
+                <span class="upload-zone__link">click to browse</span>
+              </p>
+              <p class="upload-zone__hint">Max recommended: 100 MB</p>
+              <input
+                type="file"
+                id="compressFile"
+                accept=".pdf"
+                class="upload-input"
+                aria-label="Choose PDF file"
+              />
+            </div>
+          </div>
+          <div class="file-info hidden" id="compressFileInfo"></div>
+
+          <div class="compress-controls hidden" id="compressControls">
+            <div class="slider-group">
+              <div class="slider-group__header">
+                <label for="compressQuality" class="slider-label"
+                  >Compression Quality</label
+                >
+                <span class="slider-value" id="compressQualityVal">50%</span>
+              </div>
+              <div class="slider-track-wrap">
+                <span class="slider-hint-left"
+                  >Max compression<br />Lowest quality</span
+                >
+                <input
+                  type="range"
+                  id="compressQuality"
+                  min="0"
+                  max="100"
+                  value="50"
+                  class="styled-slider"
+                  aria-label="Quality 0 to 100"
+                />
+                <span class="slider-hint-right"
+                  >No compression<br />Original quality</span
+                >
+              </div>
+              <div class="compress-estimate" id="compressEstimate">
+                <div class="estimate-item">
+                  <span class="estimate-label">Original</span>
+                  <span class="estimate-value" id="estOriginal">—</span>
+                </div>
+                <div class="estimate-arrow">→</div>
+                <div class="estimate-item">
+                  <span class="estimate-label">Estimated</span>
+                  <span class="estimate-value accent" id="estCompressed"
+                    >—</span
+                  >
+                </div>
+              </div>
+            </div>
+            <button
+              class="btn btn--primary btn--lg"
+              id="compressBtn"
+              aria-label="Compress PDF"
+            >
+              <span class="btn-text">⚡ Compress PDF</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="result-panel hidden" id="compressResult"></div>
+        </div>
+      </section>
+
+      <!-- MERGE -->
+      <section id="page-merge" class="page tool-page" aria-label="Merge PDFs">
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back to home">
+            ← Back
+          </button>
+          <h2>Merge PDFs</h2>
+          <p class="tool-page__desc">
+            Upload multiple PDFs, drag to reorder, then merge.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone upload-zone--multi"
+            id="mergeUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload multiple PDF files"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon" aria-hidden="true">📂</div>
+              <p class="upload-zone__text">
+                Drop PDFs here or
+                <span class="upload-zone__link">click to select</span>
+              </p>
+              <p class="upload-zone__hint">
+                Select 2–50 PDF files. Drag to reorder after upload.
+              </p>
+              <input
+                type="file"
+                id="mergeFiles"
+                accept=".pdf"
+                multiple
+                class="upload-input"
+                aria-label="Choose PDF files"
+              />
+            </div>
+          </div>
+
+          <div class="merge-file-list hidden" id="mergeFileList">
+            <div class="merge-file-list__header">
+              <span id="mergeCount">0 files selected</span>
+              <button class="btn btn--ghost btn--sm" id="mergeClearBtn">
+                Clear all
+              </button>
+            </div>
+            <ul
+              class="sortable-list"
+              id="mergeSortable"
+              role="list"
+              aria-label="Sortable PDF list"
+            ></ul>
+            <button
+              class="btn btn--primary btn--lg"
+              id="mergeBtn"
+              aria-label="Merge PDFs"
+              style="margin-top: 1.5rem"
+            >
+              <span class="btn-text">⊕ Merge PDFs</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="result-panel hidden" id="mergeResult"></div>
+        </div>
+      </section>
+
+      <!-- SPLIT -->
+      <section id="page-split" class="page tool-page" aria-label="Split PDF">
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back to home">
+            ← Back
+          </button>
+          <h2>Split PDF</h2>
+          <p class="tool-page__desc">
+            Split by page range, every N pages, or extract specific pages.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone"
+            id="splitUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload PDF to split"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon" aria-hidden="true">✂️</div>
+              <p class="upload-zone__text">
+                Drop a PDF here or
+                <span class="upload-zone__link">click to browse</span>
+              </p>
+              <input
+                type="file"
+                id="splitFile"
+                accept=".pdf"
+                class="upload-input"
+                aria-label="Choose PDF file"
+              />
+            </div>
+          </div>
+          <div class="file-info hidden" id="splitFileInfo"></div>
+
+          <div class="split-controls hidden" id="splitControls">
+            <div class="split-info-bar" id="splitInfoBar"></div>
+
+            <div class="mode-tabs" role="tablist" aria-label="Split mode">
+              <button
+                class="mode-tab active"
+                role="tab"
+                data-mode="range"
+                aria-selected="true"
+              >
+                By Range
+              </button>
+              <button
+                class="mode-tab"
+                role="tab"
+                data-mode="every"
+                aria-selected="false"
+              >
+                Every N Pages
+              </button>
+              <button
+                class="mode-tab"
+                role="tab"
+                data-mode="extract"
+                aria-selected="false"
+              >
+                Extract Pages
+              </button>
+            </div>
+
+            <div class="mode-panel active" id="mode-range">
+              <label class="form-label" for="rangeInput"
+                >Page ranges
+                <span class="hint">(e.g. 1-3, 5, 7-10)</span></label
+              >
+              <input
+                type="text"
+                id="rangeInput"
+                class="text-input"
+                placeholder="1-3, 5, 7-10"
+                aria-label="Page ranges"
+              />
+            </div>
+            <div class="mode-panel" id="mode-every">
+              <label class="form-label" for="everyInput"
+                >Split every <span class="hint">N</span> pages</label
+              >
+              <input
+                type="number"
+                id="everyInput"
+                class="text-input"
+                value="1"
+                min="1"
+                placeholder="1"
+                aria-label="Split every N pages"
+                style="max-width: 120px"
+              />
+            </div>
+            <div class="mode-panel" id="mode-extract">
+              <p class="form-label">
+                Click pages to select them for extraction
+              </p>
+              <div
+                class="thumb-grid"
+                id="splitThumbGrid"
+                role="list"
+                aria-label="PDF page thumbnails"
+              ></div>
+              <p class="selected-pages-display" id="selectedPagesDisplay">
+                No pages selected
+              </p>
+            </div>
+
+            <button
+              class="btn btn--primary btn--lg"
+              id="splitBtn"
+              aria-label="Split PDF"
+              style="margin-top: 1.5rem"
+            >
+              <span class="btn-text">✂ Split PDF</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="result-panel hidden" id="splitResult"></div>
+        </div>
+      </section>
+
+      <!-- UNLOCK -->
+      <section id="page-unlock" class="page tool-page" aria-label="Unlock PDF">
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back to home">
+            ← Back
+          </button>
+          <h2>Unlock PDF</h2>
+          <p class="tool-page__desc">
+            Remove password protection from an encrypted PDF.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone"
+            id="unlockUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload encrypted PDF"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon" aria-hidden="true">🔒</div>
+              <p class="upload-zone__text">
+                Drop encrypted PDF here or
+                <span class="upload-zone__link">click to browse</span>
+              </p>
+              <input
+                type="file"
+                id="unlockFile"
+                accept=".pdf"
+                class="upload-input"
+                aria-label="Choose PDF file"
+              />
+            </div>
+          </div>
+          <div class="file-info hidden" id="unlockFileInfo"></div>
+
+          <div class="unlock-controls hidden" id="unlockControls">
+            <div class="form-group">
+              <label class="form-label" for="unlockPassword"
+                >PDF Password</label
+              >
+              <div class="password-input-wrap">
+                <input
+                  type="password"
+                  id="unlockPassword"
+                  class="text-input"
+                  placeholder="Enter password"
+                  aria-label="PDF password"
+                  autocomplete="off"
+                />
+                <button
+                  class="toggle-pw-btn"
+                  id="togglePw"
+                  aria-label="Show/hide password"
+                  type="button"
+                >
+                  👁
+                </button>
+              </div>
+            </div>
+            <button
+              class="btn btn--primary btn--lg"
+              id="unlockBtn"
+              aria-label="Unlock PDF"
+            >
+              <span class="btn-text">🔓 Unlock PDF</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="result-panel hidden" id="unlockResult"></div>
+        </div>
+      </section>
+
+      <!-- EDITOR -->
+      <section id="page-editor" class="page tool-page" aria-label="PDF Editor">
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back to home">
+            ← Back
+          </button>
+          <h2>PDF Editor</h2>
+          <p class="tool-page__desc">
+            Annotate, highlight, add text &amp; shapes, reorder pages.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone"
+            id="editorUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload PDF for editing"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon" aria-hidden="true">✏️</div>
+              <p class="upload-zone__text">
+                Drop a PDF here or
+                <span class="upload-zone__link">click to browse</span>
+              </p>
+              <input
+                type="file"
+                id="editorFile"
+                accept=".pdf"
+                class="upload-input"
+                aria-label="Choose PDF file"
+              />
+            </div>
+          </div>
+
+          <div class="editor-workspace hidden" id="editorWorkspace">
+            <div
+              class="editor-toolbar"
+              role="toolbar"
+              aria-label="Annotation tools"
+            >
+              <div class="editor-tool-group">
+                <button
+                  class="editor-tool active"
+                  data-tool="select"
+                  aria-label="Select tool"
+                  title="Select"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18">
+                    <path d="M3 2l12 7-7 2-2 7z" fill="currentColor" />
+                  </svg>
+                </button>
+                <button
+                  class="editor-tool"
+                  data-tool="text"
+                  aria-label="Add text"
+                  title="Text"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18">
+                    <path d="M3 4h12v2H10v8H8V6H3z" fill="currentColor" />
+                  </svg>
+                </button>
+                <button
+                  class="editor-tool"
+                  data-tool="rect"
+                  aria-label="Draw rectangle"
+                  title="Rectangle"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18">
+                    <rect
+                      x="3"
+                      y="4"
+                      width="12"
+                      height="10"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      rx="1"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="editor-tool"
+                  data-tool="highlight"
+                  aria-label="Highlight"
+                  title="Highlight"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18">
+                    <rect
+                      x="2"
+                      y="7"
+                      width="14"
+                      height="4"
+                      fill="currentColor"
+                      opacity=".5"
+                      rx="1"
+                    />
+                    <path
+                      d="M4 13h10"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="editor-tool"
+                  data-tool="note"
+                  aria-label="Sticky note"
+                  title="Note"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18">
+                    <rect
+                      x="3"
+                      y="3"
+                      width="12"
+                      height="10"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                    />
+                    <path
+                      d="M6 8h6M6 11h4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="editor-tool-group">
+                <label class="toolbar-label" for="editorColor">Color</label>
+                <input
+                  type="color"
+                  id="editorColor"
+                  value="#6366f1"
+                  class="color-picker"
+                  aria-label="Annotation colour"
+                />
+                <label class="toolbar-label" for="editorFontSize">Size</label>
+                <input
+                  type="number"
+                  id="editorFontSize"
+                  value="12"
+                  min="6"
+                  max="72"
+                  class="size-input"
+                  aria-label="Font size"
+                />
+              </div>
+              <div class="editor-tool-group editor-tool-group--right">
+                <button
+                  class="btn btn--ghost btn--sm"
+                  id="editorSaveBtn"
+                  aria-label="Save edited PDF"
+                >
+                  💾 Save PDF
+                </button>
+                <button
+                  class="btn btn--ghost btn--sm"
+                  id="editorReorderBtn"
+                  aria-label="Apply page reorder"
+                >
+                  ↕ Apply Order
+                </button>
+              </div>
+            </div>
+
+            <div class="editor-layout">
+              <div
+                class="editor-pages-panel"
+                id="editorPagesPanel"
+                aria-label="Page thumbnails — drag to reorder"
+              >
+                <div class="pages-panel-header">
+                  Pages <span id="editorPageCount"></span>
+                </div>
+                <ul
+                  class="editor-page-list"
+                  id="editorPageList"
+                  role="list"
+                ></ul>
+              </div>
+              <div class="editor-canvas-area" id="editorCanvasArea">
+                <div class="editor-canvas-wrap" id="editorCanvasWrap">
+                  <img
+                    class="editor-page-img"
+                    id="editorPageImg"
+                    alt="PDF page"
+                    draggable="false"
+                  />
+                  <canvas
+                    class="editor-overlay"
+                    id="editorOverlay"
+                    aria-label="Annotation canvas"
+                  ></canvas>
+                </div>
+                <div class="editor-text-popup hidden" id="editorTextPopup">
+                  <textarea
+                    id="editorTextInput"
+                    placeholder="Enter text..."
+                    rows="3"
+                    aria-label="Annotation text"
+                  ></textarea>
+                  <div class="editor-text-popup-actions">
+                    <button class="btn btn--primary btn--sm" id="editorTextOk">
+                      Add
+                    </button>
+                    <button
+                      class="btn btn--ghost btn--sm"
+                      id="editorTextCancel"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="result-panel hidden" id="editorResult"></div>
+        </div>
+      </section>
+
+      <!-- TO-JPG -->
+      <section id="page-to-jpg" class="page tool-page" aria-label="PDF to JPG">
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back">
+            ← Back
+          </button>
+          <h2>PDF → JPG</h2>
+          <p class="tool-page__desc">
+            Convert each PDF page to a high-quality JPG image.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone"
+            id="jpgUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload PDF for JPG conversion"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon">🖼️</div>
+              <p class="upload-zone__text">
+                Drop PDF here or
+                <span class="upload-zone__link">click to browse</span>
+              </p>
+              <input
+                type="file"
+                id="jpgFile"
+                accept=".pdf"
+                class="upload-input"
+                aria-label="Choose PDF file"
+              />
+            </div>
+          </div>
+          <div class="file-info hidden" id="jpgFileInfo"></div>
+          <div class="convert-options hidden" id="jpgOptions">
+            <div class="form-group">
+              <label class="form-label">Output DPI</label>
+              <div class="dpi-group" role="group" aria-label="DPI selection">
+                <label class="radio-card"
+                  ><input type="radio" name="jpgDpi" value="72" />
+                  <span>72 dpi<br /><small>Screen</small></span></label
+                >
+                <label class="radio-card"
+                  ><input type="radio" name="jpgDpi" value="150" checked />
+                  <span>150 dpi<br /><small>Balanced</small></span></label
+                >
+                <label class="radio-card"
+                  ><input type="radio" name="jpgDpi" value="300" />
+                  <span>300 dpi<br /><small>Print</small></span></label
+                >
+              </div>
+            </div>
+            <button
+              class="btn btn--primary btn--lg"
+              id="jpgBtn"
+              aria-label="Convert to JPG"
+            >
+              <span class="btn-text">🖼 Convert to JPG</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="result-panel hidden" id="jpgResult"></div>
+        </div>
+      </section>
+
+      <!-- TO-PNG -->
+      <section id="page-to-png" class="page tool-page" aria-label="PDF to PNG">
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back">
+            ← Back
+          </button>
+          <h2>PDF → PNG</h2>
+          <p class="tool-page__desc">
+            Convert PDF pages to lossless PNG with transparency support.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone"
+            id="pngUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload PDF for PNG conversion"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon">🖼️</div>
+              <p class="upload-zone__text">
+                Drop PDF here or
+                <span class="upload-zone__link">click to browse</span>
+              </p>
+              <input
+                type="file"
+                id="pngFile"
+                accept=".pdf"
+                class="upload-input"
+                aria-label="Choose PDF file"
+              />
+            </div>
+          </div>
+          <div class="file-info hidden" id="pngFileInfo"></div>
+          <div class="convert-options hidden" id="pngOptions">
+            <div class="form-group">
+              <label class="form-label">Output DPI</label>
+              <div class="dpi-group" role="group">
+                <label class="radio-card"
+                  ><input type="radio" name="pngDpi" value="72" />
+                  <span>72 dpi<br /><small>Screen</small></span></label
+                >
+                <label class="radio-card"
+                  ><input type="radio" name="pngDpi" value="150" checked />
+                  <span>150 dpi<br /><small>Balanced</small></span></label
+                >
+                <label class="radio-card"
+                  ><input type="radio" name="pngDpi" value="300" />
+                  <span>300 dpi<br /><small>Print</small></span></label
+                >
+              </div>
+            </div>
+            <button
+              class="btn btn--primary btn--lg"
+              id="pngBtn"
+              aria-label="Convert to PNG"
+            >
+              <span class="btn-text">🖼 Convert to PNG</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="result-panel hidden" id="pngResult"></div>
+        </div>
+      </section>
+
+      <!-- TO-WEBP -->
+      <section
+        id="page-to-webp"
+        class="page tool-page"
+        aria-label="PDF to WebP"
+      >
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back">
+            ← Back
+          </button>
+          <h2>PDF → WebP</h2>
+          <p class="tool-page__desc">
+            Convert PDF pages to modern WebP format with a quality slider.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone"
+            id="webpUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload PDF for WebP conversion"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon">🖼️</div>
+              <p class="upload-zone__text">
+                Drop PDF here or
+                <span class="upload-zone__link">click to browse</span>
+              </p>
+              <input
+                type="file"
+                id="webpFile"
+                accept=".pdf"
+                class="upload-input"
+                aria-label="Choose PDF file"
+              />
+            </div>
+          </div>
+          <div class="file-info hidden" id="webpFileInfo"></div>
+          <div class="convert-options hidden" id="webpOptions">
+            <div class="slider-group">
+              <div class="slider-group__header">
+                <label for="webpQuality" class="slider-label"
+                  >WebP Quality</label
+                >
+                <span class="slider-value" id="webpQualVal">85%</span>
+              </div>
+              <input
+                type="range"
+                id="webpQuality"
+                min="1"
+                max="100"
+                value="85"
+                class="styled-slider"
+                aria-label="WebP quality 1-100"
+              />
+            </div>
+            <button
+              class="btn btn--primary btn--lg"
+              id="webpBtn"
+              aria-label="Convert to WebP"
+            >
+              <span class="btn-text">🌐 Convert to WebP</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="result-panel hidden" id="webpResult"></div>
+        </div>
+      </section>
+
+      <!-- TO-EXCEL -->
+      <section
+        id="page-to-excel"
+        class="page tool-page"
+        aria-label="PDF to Excel"
+      >
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back">
+            ← Back
+          </button>
+          <h2>PDF → Excel</h2>
+          <p class="tool-page__desc">
+            Extract tables from PDF and export as a formatted .xlsx workbook.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone"
+            id="excelUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload PDF for Excel conversion"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon">📊</div>
+              <p class="upload-zone__text">
+                Drop PDF here or
+                <span class="upload-zone__link">click to browse</span>
+              </p>
+              <input
+                type="file"
+                id="excelFile"
+                accept=".pdf"
+                class="upload-input"
+                aria-label="Choose PDF file"
+              />
+            </div>
+          </div>
+          <div class="file-info hidden" id="excelFileInfo"></div>
+          <div class="convert-options hidden" id="excelOptions">
+            <div class="info-box">
+              <strong>Note:</strong> Works best on PDFs with embedded selectable
+              text tables. Scanned image-PDFs require OCR preprocessing.
+            </div>
+            <button
+              class="btn btn--primary btn--lg"
+              id="excelBtn"
+              aria-label="Convert to Excel"
+            >
+              <span class="btn-text">📊 Convert to Excel</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="result-panel hidden" id="excelResult"></div>
+          <div class="table-preview hidden" id="excelPreview"></div>
+        </div>
+      </section>
+
+      <!-- TO-WORD -->
+      <section
+        id="page-to-word"
+        class="page tool-page"
+        aria-label="PDF to Word"
+      >
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back">
+            ← Back
+          </button>
+          <h2>PDF → Word</h2>
+          <p class="tool-page__desc">
+            Convert PDF to editable .docx preserving layout via pdf2docx.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone"
+            id="wordUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload PDF for Word conversion"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon">📝</div>
+              <p class="upload-zone__text">
+                Drop PDF here or
+                <span class="upload-zone__link">click to browse</span>
+              </p>
+              <input
+                type="file"
+                id="wordFile"
+                accept=".pdf"
+                class="upload-input"
+                aria-label="Choose PDF file"
+              />
+            </div>
+          </div>
+          <div class="file-info hidden" id="wordFileInfo"></div>
+          <div class="convert-options hidden" id="wordOptions">
+            <div
+              class="info-box info-box--warn"
+              id="wordImageWarning"
+              style="display: none"
+            >
+              ⚠️ This PDF may be image-based. Text extraction quality may be
+              limited.
+            </div>
+            <button
+              class="btn btn--primary btn--lg"
+              id="wordBtn"
+              aria-label="Convert to Word"
+            >
+              <span class="btn-text">📝 Convert to Word</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="result-panel hidden" id="wordResult"></div>
+        </div>
+      </section>
+
+      <!-- TO-PPT -->
+      <section
+        id="page-to-ppt"
+        class="page tool-page"
+        aria-label="PDF to PowerPoint"
+      >
+        <div class="tool-page__header">
+          <button class="back-btn" data-tool="home" aria-label="Back">
+            ← Back
+          </button>
+          <h2>PDF → PowerPoint</h2>
+          <p class="tool-page__desc">
+            Each PDF page becomes one high-resolution slide in a .pptx file.
+          </p>
+        </div>
+        <div class="tool-page__body">
+          <div
+            class="upload-zone"
+            id="pptUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload PDF for PowerPoint conversion"
+          >
+            <div class="upload-zone__inner">
+              <div class="upload-zone__icon">📽️</div>
+              <p class="upload-zone__text">
+                Drop PDF here or
+                <span class="upload-zone__link">click to browse</span>
+              </p>
+              <input
+                type="file"
+                id="pptFile"
+                accept=".pdf"
+                class="upload-input"
+                aria-label="Choose PDF file"
+              />
+            </div>
+          </div>
+          <div class="file-info hidden" id="pptFileInfo"></div>
+          <div class="convert-options hidden" id="pptOptions">
+            <div class="info-box">
+              Pages are rendered at 150 DPI and embedded as images in each
+              slide. Resulting .pptx is presentation-ready.
+            </div>
+            <button
+              class="btn btn--primary btn--lg"
+              id="pptBtn"
+              aria-label="Convert to PowerPoint"
+            >
+              <span class="btn-text">📽 Convert to PowerPoint</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="result-panel hidden" id="pptResult"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ══════════════════════════ TOAST CONTAINER ══════════════════════════════ -->
+    <div
+      class="toast-container"
+      id="toastContainer"
+      role="region"
+      aria-label="Notifications"
+      aria-live="polite"
+    ></div>
+
+    <!-- ══════════════════════════ PROGRESS OVERLAY ════════════════════════════ -->
+    <div
+      class="progress-overlay hidden"
+      id="progressOverlay"
+      role="status"
+      aria-label="Processing"
+    >
+      <div class="progress-box">
+        <div class="progress-spinner" aria-hidden="true"></div>
+        <p class="progress-msg" id="progressMsg">Processing…</p>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════ SCRIPTS ════════════════════════════════════ -->
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/compress.js"></script>
+    <script src="/static/js/merge.js"></script>
+    <script src="/static/js/split.js"></script>
+    <script src="/static/js/unlock.js"></script>
+    <script src="/static/js/to-jpg.js"></script>
+    <script src="/static/js/to-png.js"></script>
+    <script src="/static/js/to-webp.js"></script>
+    <script src="/static/js/to-excel.js"></script>
+    <script src="/static/js/to-word.js"></script>
+    <script src="/static/js/to-ppt.js"></script>
+    <script src="/static/js/editor.js"></script>
+  </body>
+</html>
